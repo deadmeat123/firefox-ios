@@ -24,7 +24,7 @@ class TopTabsTest: BaseTestCase {
         waitUntilPageLoad()
         waitForTabsButton()
         // The tabs counter shows the correct number
-        waitForExistence(app.buttons["Show Tabs"])
+        waitForExistence(app.buttons["Show Tabs"], timeout: 10)
         let tabsOpen = app.buttons["Show Tabs"].value
         XCTAssertEqual("2", tabsOpen as? String)
 
@@ -141,10 +141,10 @@ class TopTabsTest: BaseTestCase {
 
         // Close all tabs, undo it and check that the number of tabs is correct
         navigator.performAction(Action.AcceptRemovingAllTabs)
-        waitForExistence(app.staticTexts["Private Browsing"], timeout: 5)
+        waitForExistence(app.staticTexts["Private Browsing"], timeout: 10)
         XCTAssertTrue(app.staticTexts["Private Browsing"].exists, "Private welcome screen is not shown")
         // New behaviour on v14, there is no Undo in Private mode
-        waitForExistence(app.staticTexts["Private Browsing"])
+        waitForExistence(app.staticTexts["Private Browsing"], timeout:10)
     }
 
     func testCloseAllTabs() {
@@ -191,7 +191,7 @@ class TopTabsTest: BaseTestCase {
     func testLongTapTabCounter() {
         if !iPad() {
             // Long tap on Tab Counter should show the correct options
-            waitForExistence(app.buttons["Show Tabs"], timeout: 5)
+            waitForExistence(app.buttons["Show Tabs"], timeout: 10)
             app.buttons["Show Tabs"].press(forDuration: 1)
             waitForExistence(app.cells["quick_action_new_tab"])
             XCTAssertTrue(app.cells["quick_action_new_tab"].exists)
