@@ -24,7 +24,6 @@ class TopTabsTest: BaseTestCase {
         waitUntilPageLoad()
         waitForTabsButton()
         // The tabs counter shows the correct number
-        waitForExistence(app.buttons["Show Tabs"], timeout: 10)
         let tabsOpen = app.buttons["Show Tabs"].value
         XCTAssertEqual("2", tabsOpen as? String)
 
