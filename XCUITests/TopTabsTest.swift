@@ -194,7 +194,6 @@ class TopTabsTest: BaseTestCase {
             app.buttons["Show Tabs"].press(forDuration: 1)
             waitForExistence(app.cells["quick_action_new_tab"])
             XCTAssertTrue(app.cells["quick_action_new_tab"].exists)
-            waitForExistence(app.cells["tab_close"])
             XCTAssertTrue(app.cells["tab_close"].exists)
 
             // Open New Tab
@@ -209,7 +208,6 @@ class TopTabsTest: BaseTestCase {
             waitForExistence(app.buttons["Show Tabs"])
             app.buttons["Show Tabs"].press(forDuration: 1)
             waitForExistence(app.cells["quick_action_new_tab"])
-            waitForExistence(app.cells["tab_close"])
             app.cells["tab_close"].tap()
             checkNumberOfTabsExpectedToBeOpen(expectedNumberOfTabsOpen: 1)
 
